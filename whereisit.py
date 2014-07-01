@@ -34,17 +34,21 @@ def sites(dataset):
      
 
 def main():     
-
   usage = "Usage $prog [options]"
   
   parser = OptionParser(usage=usage)
   
-  parser.add_option("-p", "--propose", action="store_true", default=False, dest="propose", help="return proposed site and exit")
+  parser.add_option("-d", "--dataset", action="store", type="string", default="/None/None/None", dest="dataset", help="return locations of dataset")
   
   (opts,args) = parser.parse_args()
-
-  sitelist=sites("/DarkMatter_Monojet_M-400_AV_Tune4C_13TeV-madgraph/Spring14dr-PU_S14_POSTLS170_V6-v1/AODSIM")
   
+  dataset=opts.dataset
+  print "For dataset: %s" % dataset
+
+ # sitelist=sites("/DarkMatter_Monojet_M-400_AV_Tune4C_13TeV-madgraph/Spring14dr-PU_S14_POSTLS170_V6-v1/AODSIM")
+  sitelist={}
+  sitelist=sites(dataset)
+
   for site in sitelist.keys():
     print "Site: %s  Complete %f " % (site,sitelist[site] * 100.0)
      
