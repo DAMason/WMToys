@@ -21,7 +21,10 @@ def main(argv):
   sitelist=sites(dataset)
 
   for site in sitelist.keys():
-    print "Site: %25s  Complete %.1f " % (site,sitelist[site] * 100.0)
+    if sitelist[site]>1:
+       print "Site: %25s   %.4f GB" % (site,sitelist[site] / 1000000000.0)
+    else:
+       print "Site: %25s  Complete %.1f " % (site,sitelist[site] * 100.0)
      
 if __name__ == '__main__':
     main(sys.argv[1:])
